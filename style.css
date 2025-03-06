@@ -1,46 +1,44 @@
-@import url('https://fonts.googleapis.com/css?family=Sacramento');
-
 #card {
-   height: 700px; /* Aumentamos la altura de la carta */
-   width: 1000px; /* Aumentamos el ancho de la carta */
+   height: 800px; /* Aumentamos la altura */
+   width: 1200px; /* Aumentamos el ancho */
    margin: 5em auto;
-   position: fixed;
-   top: -15px;
-   left: 10%;
+   position: relative;
+   top: 0;
    display: flex;
    visibility: hidden;
    opacity: 0;
    transition: opacity 1s ease, transform 1s ease;
-   overflow: hidden; /* Para evitar el desbordamiento */
+   overflow: hidden;
    padding: 20px;
+   justify-content: center;
 }
 
 #card h2 {
-   font-size: 3.5em; /* Aumentamos el tamaño del título */
+   font-size: 3.5em;
    margin: 0;
    color: pink;
    text-align: center;
 }
 
 #card p {
-   font-size: 1.8em; /* Aumentamos el tamaño del texto */
+   font-size: 1.8em;
    text-align: justify;
    padding-left: 30px;
    padding-right: 30px;
-   line-height: 1.6; /* Mejoramos la legibilidad */
-   overflow-y: auto; /* Permitimos el desplazamiento si el texto es largo */
-   max-height: 500px; /* Limitamos la altura del texto para que no ocupe toda la carta */
+   line-height: 1.6;
+   overflow-y: auto;
+   max-height: 500px;
 }
 
 .side {
    background: #eee;
-   height: 700px; /* Aumentamos la altura de las caras */
-   width: 500px; /* Aumentamos el ancho de las caras */
+   height: 800px; /* Aumentamos la altura */
+   width: 600px; /* Aumentamos el ancho */
    padding: 20px;
 }
 
 .side.one {
-   width: 400px;
+   width: 500px; /* Aumentamos el ancho */
    transform: skew(10deg, 20deg);
    background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
 }
@@ -92,19 +90,18 @@ body {
    top: 45px;
 }
 
-/* Corazón mejorado */
 .heart {
    position: relative;
    background-color: #e01911;
    display: inline-block;
-   height: 220px; /* Hacemos el corazón un poco más grande */
-   width: 220px; /* Hacemos el corazón un poco más grande */
+   height: 220px;
+   width: 220px;
    top: 50px;
    left: 0;
    transform: rotate(-45deg);
-   filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, .3)); /* Sombra sutil */
-   transition: .5s ease; /* Transición más suave */
-   animation: heartbeat 1.5s infinite; /* Animación de latido */
+   filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, .3));
+   transition: .5s ease;
+   animation: heartbeat 1.5s infinite;
 }
 
 .heart:before,
@@ -112,8 +109,8 @@ body {
    content: "";
    background-color: #e01911;
    border-radius: 50%;
-   height: 220px; /* Hacemos el corazón un poco más grande */
-   width: 220px; /* Hacemos el corazón un poco más grande */
+   height: 220px;
+   width: 220px;
    position: absolute;
 }
 
@@ -127,20 +124,18 @@ body {
    top: 0;
 }
 
-/* Animación de latido */
 @keyframes heartbeat {
    0% {
       transform: scale(1);
    }
    50% {
-      transform: scale(1.1); /* Un poco más grande en el medio de la animación */
+      transform: scale(1.1);
    }
    100% {
       transform: scale(1);
    }
 }
 
-/* Mejoras en la envoltura */
 .front {
    position: absolute;
    width: 0;
@@ -195,4 +190,86 @@ body {
 
 .valentines-day:hover .text {
    transform: translateY(-50px);
+}
+
+/* Media Queries para hacer el diseño responsivo */
+@media (max-width: 1200px) {
+   #card {
+      width: 95%; /* Aumentamos un poco el ancho */
+      height: 750px;
+   }
+   .side {
+      width: 100%;
+      height: auto;
+   }
+}
+
+@media (max-width: 768px) {
+   #card {
+      height: auto;
+      width: 90%; /* Asegura que la carta ocupe el 90% del ancho disponible */
+      margin: 2em auto;
+      top: 0;
+      display: block;
+   }
+
+   #card h2 {
+      font-size: 2.5em;
+   }
+
+   #card p {
+      font-size: 1.2em;
+      padding-left: 20px;
+      padding-right: 20px;
+   }
+
+   .side {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+   }
+
+   .heart {
+      height: 180px;
+      width: 180px;
+   }
+
+   .text {
+      font-size: 1.5em;
+   }
+}
+
+@media (max-width: 480px) {
+   #card {
+      width: 100%;
+      height: auto;
+      margin: 1em auto;
+      left: 50%;
+      transform: translateX(-50%); /* Centrado horizontal */
+   }
+
+   #card h2 {
+      font-size: 2em;
+   }
+
+   #card p {
+      font-size: 1em;
+      padding-left: 10px;
+      padding-right: 10px;
+   }
+
+   .side {
+      width: 100%;
+      height: auto;
+      padding: 5px;
+   }
+
+   .heart {
+      height: 150px;
+      width: 150px;
+   }
+
+   .text {
+      font-size: 1.2em;
+   }
 }
