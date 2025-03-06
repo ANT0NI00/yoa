@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+
+#card {
+   height: 700px; /* Aumentamos la altura de la carta */
+   width: 1000px; /* Aumentamos el ancho de la carta */
+   margin: 5em auto;
+   position: fixed;
+   top: -15px;
+   left: 10%;
+   display: flex;
+   visibility: hidden;
+   opacity: 0;
+   transition: opacity 1s ease, transform 1s ease;
+   overflow: hidden; /* Para evitar el desbordamiento */
+   padding: 20px;
+}
+
+#card h2 {
+   font-size: 3.5em; /* Aumentamos el tamaño del título */
+   margin: 0;
+   color: pink;
+   text-align: center;
+}
+
+#card p {
+   font-size: 1.8em; /* Aumentamos el tamaño del texto */
+   text-align: justify;
+   padding-left: 30px;
+   padding-right: 30px;
+   line-height: 1.6; /* Mejoramos la legibilidad */
+   overflow-y: auto; /* Permitimos el desplazamiento si el texto es largo */
+   max-height: 500px; /* Limitamos la altura del texto para que no ocupe toda la carta */
+}
+
+.side {
+   background: #eee;
+   height: 700px; /* Aumentamos la altura de las caras */
+   width: 500px; /* Aumentamos el ancho de las caras */
+   padding: 20px;
+}
+
+.side.one {
+   width: 400px;
+   transform: skew(10deg, 20deg);
+   background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
+}
+
+.side.two {
+   transform: skew(10deg, -15deg);
+   background: linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+}
+
+body {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   font-family: 'Sacramento', cursive;
+   background-color: #f1e3d3;
+   overflow: hidden;
+}
+
+.valentines-day {
+   position: relative;
+   cursor: pointer;
+}
+
+.envelope {
+   position: relative;
+   filter: drop-shadow(0 0 25px rgba(0, 0, 0, .3));
+}
+
+.envelope:before {
+   content: "";
+   position: absolute;
+   width: 254px;
+   height: 254px;
+   background-color: #ff9494;
+   transform: rotate(-45deg);
+   border-radius: 0 15px 0 0;
+   left: -37px;
+   top: -82px;
+}
+
+.envelope:after {
+   content: "";
+   position: absolute;
+   background-color: #ff9494;
+   width: 360px;
+   height: 225px;
+   left: -90px;
+   top: 45px;
+}
+
+/* Corazón mejorado */
+.heart {
+   position: relative;
+   background-color: #e01911;
+   display: inline-block;
+   height: 220px; /* Hacemos el corazón un poco más grande */
+   width: 220px; /* Hacemos el corazón un poco más grande */
+   top: 50px;
+   left: 0;
+   transform: rotate(-45deg);
+   filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, .3)); /* Sombra sutil */
+   transition: .5s ease; /* Transición más suave */
+   animation: heartbeat 1.5s infinite; /* Animación de latido */
+}
+
+.heart:before,
+.heart:after {
+   content: "";
+   background-color: #e01911;
+   border-radius: 50%;
+   height: 220px; /* Hacemos el corazón un poco más grande */
+   width: 220px; /* Hacemos el corazón un poco más grande */
+   position: absolute;
+}
+
+.heart:before {
+   top: -120px;
+   left: 0;
+}
+
+.heart:after {
+   left: 120px;
+   top: 0;
+}
+
+/* Animación de latido */
+@keyframes heartbeat {
+   0% {
+      transform: scale(1);
+   }
+   50% {
+      transform: scale(1.1); /* Un poco más grande en el medio de la animación */
+   }
+   100% {
+      transform: scale(1);
+   }
+}
+
+/* Mejoras en la envoltura */
+.front {
+   position: absolute;
+   width: 0;
+   height: 0;
+   border-right: 190px solid #fbd2d2;
+   border-top: 113px solid transparent;
+   border-bottom: 113px solid transparent;
+   top: 44px;
+   left: 80px;
+   z-index: 4;
+}
+
+.front:before {
+   content: "";
+   position: absolute;
+   width: 0;
+   height: 0;
+   border-left: 190px solid #fbd2d2;
+   border-top: 113px solid transparent;
+   border-bottom: 113px solid transparent;
+   top: -113px;
+   left: -170px;
+}
+
+.front:after {
+   width: 0;
+   height: 0;
+   position: absolute;
+   content: "";
+   border-bottom: 150px solid #fce7e9;
+   border-right: 180px solid transparent;
+   border-left: 180px solid transparent;
+   top: -36px;
+   left: -170px;
+}
+
+.text {
+   position: absolute;
+   font-family: arial;
+   letter-spacing: 5px;
+   text-align: center;
+   color: white;
+   z-index: 2;
+   top: 80px;
+   left: 15px;
+   transition: .5s;
+}
+
+.valentines-day:hover .heart {
+   transform: translateY(-50px) rotate(-45deg);
+}
+
+.valentines-day:hover .text {
+   transform: translateY(-50px);
+}
